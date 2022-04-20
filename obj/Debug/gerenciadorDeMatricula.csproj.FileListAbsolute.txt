@@ -6,3 +6,11 @@ D:\Documentos\gerenciadorDeMatricula\gerenciadorDeMatricula\gerenciadorDeMatricu
 D:\Documentos\gerenciadorDeMatricula\gerenciadorDeMatricula\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.CoreCompileInputs.cache
 D:\Documentos\gerenciadorDeMatricula\gerenciadorDeMatricula\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.exe
 D:\Documentos\gerenciadorDeMatricula\gerenciadorDeMatricula\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.pdb
+D:\Documentos\gerenciadorDeMatricula\bin\Debug\gerenciadorDeMatricula.exe.config
+D:\Documentos\gerenciadorDeMatricula\bin\Debug\gerenciadorDeMatricula.exe
+D:\Documentos\gerenciadorDeMatricula\bin\Debug\gerenciadorDeMatricula.pdb
+D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.AssemblyReference.cache
+D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.SuggestedBindingRedirects.cache
+D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.CoreCompileInputs.cache
+D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.exe
+D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.pdb
