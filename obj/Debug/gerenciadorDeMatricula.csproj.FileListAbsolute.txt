@@ -14,3 +14,11 @@ D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.Sug
 D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.CoreCompileInputs.cache
 D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.exe
 D:\Documentos\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.pdb
+M:\Dev\GitHub\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.exe
+M:\Dev\GitHub\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.pdb
+M:\Dev\GitHub\gerenciadorDeMatricula\bin\Debug\gerenciadorDeMatricula.exe.config
+M:\Dev\GitHub\gerenciadorDeMatricula\bin\Debug\gerenciadorDeMatricula.exe
+M:\Dev\GitHub\gerenciadorDeMatricula\bin\Debug\gerenciadorDeMatricula.pdb
+M:\Dev\GitHub\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.AssemblyReference.cache
+M:\Dev\GitHub\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.SuggestedBindingRedirects.cache
+M:\Dev\GitHub\gerenciadorDeMatricula\obj\Debug\gerenciadorDeMatricula.csproj.CoreCompileInputs.cache
