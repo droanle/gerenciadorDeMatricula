@@ -5,11 +5,14 @@ using System.Text;
 using System.Data;
 using System.Threading.Tasks;
 
-namespace gerenciadorDeMatricula{
-    
-    class Program{
+namespace gerenciadorDeMatricula
+{
 
-        static void Main(string[] args){
+    class Program
+    {
+
+        static void Main(string[] args)
+        {
 
             List<string> curso = new List<string>(); // Guarda o nome e posição dos cursos registrado
             List<DataTable> tabelaAlunos = new List<DataTable>();
@@ -20,12 +23,13 @@ namespace gerenciadorDeMatricula{
 
             int loop = 1, e, j;
 
-            Registro reg = new Registro();
+            Registro reg = new Registro(); //estanciando as classes como objeto para poder invocá-las
             Editor edit = new Editor();
 
             // loop do menu
-            while (loop != 7) {
-                
+            while (loop != 7)
+            {
+
                 Console.WriteLine("\n Por favor escolha uma das opções a baixo: ");
                 Console.WriteLine(
                     "\n 1) Registrar Curso" +
@@ -37,14 +41,15 @@ namespace gerenciadorDeMatricula{
                     "\n 7) Sair"
                 );
 
-                try { loop  = Convert.ToInt32(Console.ReadLine()); } catch { loop = 7; }
-                
+                try { loop = Convert.ToInt32(Console.ReadLine()); } catch { loop = 7; }
+
                 // Executa as operações
-                switch (loop) {
+                switch (loop)
+                {
 
                     // Registrar Curso
                     case 1:
-                        Console.Clear();
+                        Console.Clear(); //Limpar o texto do console
                         BoasVindas();
                         barra(20);
 
@@ -62,11 +67,13 @@ namespace gerenciadorDeMatricula{
                         barra(20);
 
                         if (curso.Count == 0) Console.WriteLine("\nVocê precisa registrar um curso para matricular um aluno");
-                        else{
+                        else
+                        {
 
                             Console.WriteLine("\nLista de cursos: ");
-                            for(int i = 0; i < curso.Count; i++){
-                                if(curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
+                            for (int i = 0; i < curso.Count; i++)
+                            {
+                                if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
                             }
 
                             Console.Write("\nEscolha o curso: ");
@@ -82,12 +89,13 @@ namespace gerenciadorDeMatricula{
                             tabelaAlunos[e].Rows.Add(row);
 
                             Console.WriteLine("\nLista de alunos: ");
-                            for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++){
+                            for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
+                            {
                                 Console.WriteLine("{0, -17}{1}", (""), (tabelaAlunos[e].Rows[i]["nMatricula"] + " - " + tabelaAlunos[e].Rows[i]["nome"]));
                             }
                         }
                         barra(20);
-                        
+
                         break;
 
                     // Editar Matrícula
@@ -97,18 +105,21 @@ namespace gerenciadorDeMatricula{
                         barra(20);
 
                         if (curso.Count == 0) Console.WriteLine("\nVocê precisa registrar um curso para matricular um aluno");
-                        else{
+                        else
+                        {
                             Console.WriteLine("\nLista de curso: ");
-                            for (int i = 0; i < curso.Count; i++){
-                                if(curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
+                            for (int i = 0; i < curso.Count; i++)
+                            {
+                                if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
                             }
 
                             Console.Write("\nEscolha o curso: ");
                             e = Convert.ToInt32(Console.ReadLine());
 
                             Console.WriteLine("\nLista de alunos: ");
-                            for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++){
-                                if(curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (tabelaAlunos[e].Rows[i]["nMatricula"] + " - " + tabelaAlunos[e].Rows[i]["nome"]));
+                            for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
+                            {
+                                if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (tabelaAlunos[e].Rows[i]["nMatricula"] + " - " + tabelaAlunos[e].Rows[i]["nome"]));
                             }
 
                             Console.Write("\nEscolha o aluno: ");
@@ -117,7 +128,7 @@ namespace gerenciadorDeMatricula{
                             DataRow[] searchInRow = tabelaAlunos[e].Select(("nMatricula = " + j), "nMatricula");
 
                             string[] searchResult = new string[5];
-                            for (int i = 0; i < 5; i++) searchResult[i] = (string)searchInRow[0][(i+1)];
+                            for (int i = 0; i < 5; i++) searchResult[i] = (string)searchInRow[0][(i + 1)];
 
                             string[] rowValue = edit.editor(searchResult);
                             tabelaAlunos[e].Rows[j]["nome"] = rowValue[0];
@@ -138,11 +149,14 @@ namespace gerenciadorDeMatricula{
                         barra(20);
 
                         if (curso.Count == 0) Console.WriteLine("\nVocê precisa registrar um curso para matricular um aluno");
-                        else{
+                        else
+                        {
                             Console.WriteLine("\nLista de curso: ");
-                            for (int i = 0; i <= curso.Count; i++){
-                                if(i != curso.Count) {
-                                    if(curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
+                            for (int i = 0; i <= curso.Count; i++)
+                            {
+                                if (i != curso.Count)
+                                {
+                                    if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
                                 }
                                 else Console.WriteLine("{0, -17}{1}", (""), (i + " - Mostrar todas as Matriculas"));
                             }
@@ -150,22 +164,25 @@ namespace gerenciadorDeMatricula{
                             Console.Write("\nEscolha o curso: ");
                             e = Convert.ToInt32(Console.ReadLine());
 
-                            if(e != curso.Count) { 
+                            if (e != curso.Count)
+                            {
                                 Console.WriteLine("\n   Lista de matriculas do curso \"" + curso[e] + "\":");
                                 Console.WriteLine(
-                                    "{0, -6}"+
-                                    "| Numero da matricula "+
-                                    "|   Nome do aluno   "+
-                                    "|     Telefone     "+
-                                    "| Data de Nascimento "+
-                                    "| Nome do Responsável "+
+                                    "{0, -6}" +
+                                    "| Numero da matricula " +
+                                    "|   Nome do aluno   " +
+                                    "|     Telefone     " +
+                                    "| Data de Nascimento " +
+                                    "| Nome do Responsável " +
                                     "|     Endereço     |", ("")
                                 );
 
-                                try {
-                                    if(tabelaAlunos[e].Rows.Count == 0) { throw new ArgumentNullException("Nenhuma matrícula registrada"); }
-                                    for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++){
-                                        Console.WriteLine("{0, -6}| {1, -19} | {2, -17} | {3, -16} | {4, -18} | {5, -19} | {6, -16} |", 
+                                try
+                                {
+                                    if (tabelaAlunos[e].Rows.Count == 0) { throw new ArgumentNullException("Nenhuma matrícula registrada"); }
+                                    for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
+                                    {
+                                        Console.WriteLine("{0, -6}| {1, -19} | {2, -17} | {3, -16} | {4, -18} | {5, -19} | {6, -16} |",
                                             (""),
                                             tabelaAlunos[e].Rows[i]["nMatricula"],
                                             tabelaAlunos[e].Rows[i]["nome"],
@@ -175,27 +192,34 @@ namespace gerenciadorDeMatricula{
                                             tabelaAlunos[e].Rows[i]["endereco"]
                                         );
                                     }
-                                } catch {
-                                    Console.WriteLine("{0,-6}| {1} {0,-80}|", (""),"Não existe nenhuma matrícula registrada!");
                                 }
-                            } else {
+                                catch
+                                {
+                                    Console.WriteLine("{0,-6}| {1} {0,-80}|", (""), "Não existe nenhuma matrícula registrada!");
+                                }
+                            }
+                            else
+                            {
                                 Console.WriteLine("\nTodas as matriculas: ");
-                                for (e = 0; e < curso.Count; e++){
+                                for (e = 0; e < curso.Count; e++)
+                                {
                                     Console.WriteLine("\n   Lista de matriculas do curso \"" + curso[e] + "\":");
                                     Console.WriteLine(
-                                        "\n{0, -6}"+
-                                        "| Numero da matricula "+
-                                        "|   Nome do aluno   "+
-                                        "|     Telefone     "+
-                                        "| Data de Nascimento "+
-                                        "| Nome do Responsável "+
+                                        "\n{0, -6}" +
+                                        "| Numero da matricula " +
+                                        "|   Nome do aluno   " +
+                                        "|     Telefone     " +
+                                        "| Data de Nascimento " +
+                                        "| Nome do Responsável " +
                                         "|     Endereço     |", ("")
                                     );
 
-                                    try {
-                                        if(tabelaAlunos[e].Rows.Count == 0) { throw new ArgumentNullException("Nenhuma matrícula registrada"); }
-                                        for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++){
-                                            Console.WriteLine("{0, -6}| {1, -19} | {2, -17} | {3, -16} | {4, -18} | {5, -19} | {6, -16} |", 
+                                    try
+                                    {
+                                        if (tabelaAlunos[e].Rows.Count == 0) { throw new ArgumentNullException("Nenhuma matrícula registrada"); }
+                                        for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
+                                        {
+                                            Console.WriteLine("{0, -6}| {1, -19} | {2, -17} | {3, -16} | {4, -18} | {5, -19} | {6, -16} |",
                                                 (""),
                                                 tabelaAlunos[e].Rows[i]["nMatricula"],
                                                 tabelaAlunos[e].Rows[i]["nome"],
@@ -205,10 +229,12 @@ namespace gerenciadorDeMatricula{
                                                 tabelaAlunos[e].Rows[i]["endereco"]
                                             );
                                         }
-                                    } catch {
-                                        Console.WriteLine("{0,-6}| {1} {0,-80}|", (""),"Não existe nenhuma matrícula registrada!");
                                     }
-                                }   
+                                    catch
+                                    {
+                                        Console.WriteLine("{0,-6}| {1} {0,-80}|", (""), "Não existe nenhuma matrícula registrada!");
+                                    }
+                                }
                             }
                         }
                         barra(20);
@@ -222,29 +248,31 @@ namespace gerenciadorDeMatricula{
                         barra(20);
 
                         Console.WriteLine("\nLista de curso: ");
-                        for (int i = 0; i < curso.Count; i++){
-                            if(curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
+                        for (int i = 0; i < curso.Count; i++)
+                        {
+                            if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
                         }
 
                         Console.Write("\nEscolha o curso: ");
                         e = Convert.ToInt32(Console.ReadLine());
 
                         Console.WriteLine("\nLista de alunos: ");
-                        for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++){
-                           Console.WriteLine("{0, -17}{1}", (""), (i + " - " + tabelaAlunos[e].Rows[i]["nome"]));
+                        for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
+                        {
+                            Console.WriteLine("{0, -17}{1}", (""), (i + " - " + tabelaAlunos[e].Rows[i]["nome"]));
                         }
 
                         Console.Write("\nEscolha o aluno: ");
                         j = Convert.ToInt32(Console.ReadLine());
-                        
+
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.Write("Tem certeza que quer deletar a matricula desse aluno(a)? [y/n] ");
-                        if(Console.ReadLine() == "y")
+                        if (Console.ReadLine() == "y")
                         {
                             tabelaAlunos[e].Rows[j].Delete();
                         }
 
-                        
+
                         barra(20);
 
                         break;
@@ -256,21 +284,23 @@ namespace gerenciadorDeMatricula{
                         barra(20);
 
                         Console.WriteLine("\nLista de curso: ");
-                        for (int i = 0; i < curso.Count; i++){
-                            if(curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
+                        for (int i = 0; i < curso.Count; i++)
+                        {
+                            if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
                         }
 
                         Console.Write("\nEscolha o curso: ");
                         e = Convert.ToInt32(Console.ReadLine());
-                        
+
                         Console.ForegroundColor = ConsoleColor.DarkRed;
                         Console.WriteLine("Tem certeza que quer deletar esse curso? [y/n] ");
-                        if(Console.ReadLine() == "y"){
+                        if (Console.ReadLine() == "y")
+                        {
                             curso.RemoveAt(e);
                             tabelaAlunos.RemoveAt(e);
                         }
 
-                        
+
                         barra(20);
 
                         break;
@@ -282,13 +312,14 @@ namespace gerenciadorDeMatricula{
         }
 
         // método que insere uma barra de separação
-        static void barra(int size){
+        static void barra(int size)
+        {
             Console.ForegroundColor = ConsoleColor.Cyan;
 
             Console.Write("\n//");
-            for(int i = 0; i < size; i++) Console.Write("=");
+            for (int i = 0; i < size; i++) Console.Write("=");
             Console.Write("//");
-            for(int i = 0; i < size; i++) Console.Write("=");
+            for (int i = 0; i < size; i++) Console.Write("=");
             Console.Write("//\n\n");
 
             Console.ResetColor();
@@ -318,7 +349,7 @@ namespace gerenciadorDeMatricula{
 
         static DataTable CreateTable()
         {
-            
+
             DataTable table = new DataTable("alunos");
             DataColumn column;
 
@@ -386,11 +417,11 @@ namespace gerenciadorDeMatricula{
             table.Columns.Add(column);
 
             return table;
-          
+
 
 
         }
-        
+
     }
 
     //Classe com as funções do registro
@@ -400,9 +431,9 @@ namespace gerenciadorDeMatricula{
 
         public string[] registrar()
         {
-            Console.Write("\n Digite o nome do aluno: ");//exibir texto que está entre parênteses
+            Console.Write("\n Digite o nome do aluno: ");
             aluno[0] = Console.ReadLine();
-
+            //Registra a string digitada pelo usuário na posição especificada
             Console.Write("\n Digite a data de nascimento do aluno (dd/mm/aaaa): ");
             aluno[1] = Console.ReadLine();
 
@@ -433,6 +464,8 @@ namespace gerenciadorDeMatricula{
             value = Console.ReadLine();
             if (value != null) { aluno[0] = value; value = null; }
             else aluno[0] = row[0];
+            //se o usuário não digitar nada o valor se mantem null e  ativa a condição do else,
+            //mantendo os valores da linha nas posições especificadas
 
             Console.Write("\n Digite a data de nascimento do aluno (dd/mm/aaaa): ");
             value = Console.ReadLine();
@@ -462,5 +495,5 @@ namespace gerenciadorDeMatricula{
 }
 
 
-    
+
 
