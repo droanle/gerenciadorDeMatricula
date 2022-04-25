@@ -64,12 +64,8 @@ namespace gerenciadorDeMatricula
                 {                                                       // Verifica qual opção foi escolhida
 
                     case 1:
-                        //Console.Clear();                              // Limpa a tela
                         BoasVindas();                                   // Dá as boas vindas
-                        //barra(20);                                    // Cria uma barra de separação
-
-                        //obs: não foi necessário criar um console.Clear e uma barra de separação, pois o menu pode ter isso, 
-                        //assim não é necessário repetir o mesmo código
+                        
 
                         Console.Write("Insira a nome do curso a ser registrado: ");
                         curso.Add(Console.ReadLine());                  // Recebe o nome do curso
@@ -134,7 +130,7 @@ namespace gerenciadorDeMatricula
 
                             for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
                             {                                           // Loop para listar os alunos
-                                if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (tabelaAlunos[e].Rows[i]["nMatricula"] + " - " + tabelaAlunos[e].Rows[i]["nome"]));
+                                if (curso[e] != null) Console.WriteLine("{0, -17}{1}", (""), (tabelaAlunos[e].Rows[i]["nMatricula"] + " - " + tabelaAlunos[e].Rows[i]["nome"]));
                             }
 
                             Console.Write("\nEscolha o aluno: ");       // Escolhe o aluno
@@ -466,27 +462,34 @@ namespace gerenciadorDeMatricula
         private string[] aluno = new string[5];                     // Array com os dados do aluno
         public string[] editor(string[] row)
         {                                                           // Método que edita os dados do aluno
+            Console.Write("\n Caso queira manter o valor atual basta apertar \"Enter\" com o campo vazio. Os valores que estão atualmente registrados na matrícula do aluno são exibidos ante dos campos de inserção do novo dado.");
             string value = null;                                    // Variável que recebe o valor digitado pelo usuário
+
+            Console.Write("\n Valor atual: " + row[0]);
             Console.Write("\n Digite o nome do aluno: ");           // exibir texto que está entre parênteses
             value = Console.ReadLine();                             // Ler o nome do aluno
             if (value != null) { aluno[0] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
             else aluno[0] = row[0];                                 // Se o valor for nulo, atribui o valor do array
 
+            Console.Write("\n Valor atual: " + row[1]);
             Console.Write("\n Digite a data de nascimento do aluno (dd/mm/aaaa): ");
             value = Console.ReadLine();                             // Ler a data de nascimento do aluno
             if (value != null) { aluno[1] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
             else aluno[1] = row[1];                                 // Se o valor for nulo, atribui o valor do array
 
+            Console.Write("\n Valor atual: " + row[2]);
             Console.Write("\n Digite o endereço do aluno: ");
             value = Console.ReadLine();                             // Ler o endereço do aluno
             if (value != null) { aluno[2] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
             else aluno[2] = row[2];                                 // Se o valor for nulo, atribui o valor do array
 
+            Console.Write("\n Valor atual: " + row[3]);
             Console.Write("\n Digite o número de telefone do aluno: ");
             value = Console.ReadLine();                             // Ler o número de telefone do aluno
             if (value != null) { aluno[3] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
             else aluno[3] = row[3];                                 // Se o valor for nulo, atribui o valor do array
 
+            Console.Write("\n Valor atual: " + row[4]);
             Console.Write("\n Digite o nome do responsavél pelo o aluno: ");
             value = Console.ReadLine();                             // Ler o nome do responsavél pelo o aluno
             if (value != null) { aluno[4] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
