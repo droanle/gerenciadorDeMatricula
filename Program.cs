@@ -40,9 +40,9 @@ namespace gerenciadorDeMatricula
             {                                                           // loop do menu
 
                 Console.WriteLine("\n Por favor escolha uma das opções a baixo: ");
-                Console.WriteLine(
+                Console.Write(
                     "\n 1) Registrar Curso" +
-                    "\n 2) Matrícular aluno" +
+                    "\n 2) Matricular aluno" +
                     "\n 3) Editar Matrícula" +
                     "\n 4) Exibir Matrículas" +
                     "\n 5) Deletar Curso" +
@@ -261,6 +261,32 @@ namespace gerenciadorDeMatricula
                         Console.Write("\nEscolha o curso: ");                           // Escolhe o curso
                         e = Convert.ToInt32(Console.ReadLine());                        // Recebe a opção do usuário
 
+                        Console.ForegroundColor = ConsoleColor.DarkRed;                 // Cor da letra
+                        Console.Write("Tem certeza que quer deletar esse curso? [y/n] ");   // Pergunta se o usuário quer deletar o curso
+                        if (Console.ReadLine() == "y")
+                        {                                                               // Se o usuário escolher a opção "Sim"
+                            curso.RemoveAt(e);                                          // Remove o curso
+                            tabelaAlunos.RemoveAt(e);                                   // Remove a tabela de alunos
+                        }
+
+
+                        barra(20);                                                      // Barra de separação
+                        
+                        break;                                                          // Fim do case 5
+
+                    // Deletar Curso
+                    case 6:
+                        BoasVindas();                                                   // Boas-vindas
+
+                        Console.WriteLine("\nLista de curso: ");                        // Lista os cursos
+                        for (int i = 0; i < curso.Count; i++)
+                        {                                                               // Loop para listar os cursos
+                            if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
+                        }
+
+                        Console.Write("\nEscolha o curso: ");                           // Escolhe o curso
+                        e = Convert.ToInt32(Console.ReadLine());                        // Recebe a opção do usuário
+
                         Console.WriteLine("\nLista de alunos: ");                       // Lista os alunos
                         for (int i = 0; i < tabelaAlunos[e].Rows.Count; i++)
                         {                                                               // Loop para listar os alunos
@@ -278,32 +304,7 @@ namespace gerenciadorDeMatricula
                         }
 
 
-                        barra(20);                                                      // Barra de separação
-                        break;                                                          // Fim do case 5
-
-                    // Deletar Curso
-                    case 6:
-                        BoasVindas();                                                   // Boas-vindas
-
-                        Console.WriteLine("\nLista de curso: ");                        // Lista os cursos
-                        for (int i = 0; i < curso.Count; i++)
-                        {                                                               // Loop para listar os cursos
-                            if (curso[i] != null) Console.WriteLine("{0, -17}{1}", (""), (i + " - " + curso[i]));
-                        }
-
-                        Console.Write("\nEscolha o curso: ");                           // Escolhe o curso
-                        e = Convert.ToInt32(Console.ReadLine());                        // Recebe a opção do usuário
-
-                        Console.ForegroundColor = ConsoleColor.DarkRed;                 // Cor da letra
-                        Console.WriteLine("Tem certeza que quer deletar esse curso? [y/n] ");   // Pergunta se o usuário quer deletar o curso
-                        if (Console.ReadLine() == "y")
-                        {                                                               // Se o usuário escolher a opção "Sim"
-                            curso.RemoveAt(e);                                          // Remove o curso
-                            tabelaAlunos.RemoveAt(e);                                   // Remove a tabela de alunos
-                        }
-
-
-                        barra(20);                                                      // Barra de separação
+                        barra(20);                                                      // Barra de separação  
                         break;                                                          // Fim do case 6
 
                     default: loop = 7; break;                                           // Fim do switch
@@ -462,38 +463,38 @@ namespace gerenciadorDeMatricula
         private string[] aluno = new string[5];                     // Array com os dados do aluno
         public string[] editor(string[] row)
         {                                                           // Método que edita os dados do aluno
-            Console.Write("\n Caso queira manter o valor atual basta apertar \"Enter\" com o campo vazio. Os valores que estão atualmente registrados na matrícula do aluno são exibidos ante dos campos de inserção do novo dado.");
-            string value = null;                                    // Variável que recebe o valor digitado pelo usuário
+            Console.WriteLine("\nCaso queira manter o valor atual basta apertar \"Enter\" com o campo vazio. Os valores que estão atualmente registrados na matrícula do aluno são exibidos ante dos campos de inserção do novo dado.");
+            string value = "";                                    // Variável que recebe o valor digitado pelo usuário
 
             Console.Write("\n Valor atual: " + row[0]);
             Console.Write("\n Digite o nome do aluno: ");           // exibir texto que está entre parênteses
             value = Console.ReadLine();                             // Ler o nome do aluno
-            if (value != null) { aluno[0] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
+            if (value != "") { aluno[0] = value; value = ""; }  // Se o valor não for nulo, atribui o valor ao array
             else aluno[0] = row[0];                                 // Se o valor for nulo, atribui o valor do array
 
-            Console.Write("\n Valor atual: " + row[1]);
+            Console.Write("\n Valor atual: " + row[2]);
             Console.Write("\n Digite a data de nascimento do aluno (dd/mm/aaaa): ");
             value = Console.ReadLine();                             // Ler a data de nascimento do aluno
-            if (value != null) { aluno[1] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
-            else aluno[1] = row[1];                                 // Se o valor for nulo, atribui o valor do array
-
-            Console.Write("\n Valor atual: " + row[2]);
-            Console.Write("\n Digite o endereço do aluno: ");
-            value = Console.ReadLine();                             // Ler o endereço do aluno
-            if (value != null) { aluno[2] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
-            else aluno[2] = row[2];                                 // Se o valor for nulo, atribui o valor do array
-
-            Console.Write("\n Valor atual: " + row[3]);
-            Console.Write("\n Digite o número de telefone do aluno: ");
-            value = Console.ReadLine();                             // Ler o número de telefone do aluno
-            if (value != null) { aluno[3] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
-            else aluno[3] = row[3];                                 // Se o valor for nulo, atribui o valor do array
+            if (value != "") { aluno[1] = value; value = ""; }  // Se o valor não for nulo, atribui o valor ao array
+            else aluno[1] = row[2];                                 // Se o valor for nulo, atribui o valor do array
 
             Console.Write("\n Valor atual: " + row[4]);
+            Console.Write("\n Digite o endereço do aluno: ");
+            value = Console.ReadLine();                             // Ler o endereço do aluno
+            if (value != "") { aluno[2] = value; value = ""; }  // Se o valor não for nulo, atribui o valor ao array
+            else aluno[2] = row[4];                                 // Se o valor for nulo, atribui o valor do array
+
+            Console.Write("\n Valor atual: " + row[1]);
+            Console.Write("\n Digite o número de telefone do aluno: ");
+            value = Console.ReadLine();                             // Ler o número de telefone do aluno
+            if (value != "") { aluno[3] = value; value = ""; }  // Se o valor não for nulo, atribui o valor ao array
+            else aluno[3] = row[1];                                 // Se o valor for nulo, atribui o valor do array
+
+            Console.Write("\n Valor atual: " + row[3]);
             Console.Write("\n Digite o nome do responsavél pelo o aluno: ");
             value = Console.ReadLine();                             // Ler o nome do responsavél pelo o aluno
-            if (value != null) { aluno[4] = value; value = null; }  // Se o valor não for nulo, atribui o valor ao array
-            else aluno[4] = row[4];                                 // Se o valor for nulo, atribui o valor do array
+            if (value != "") { aluno[4] = value; value = ""; }  // Se o valor não for nulo, atribui o valor ao array
+            else aluno[4] = row[3];                                 // Se o valor for nulo, atribui o valor do array
 
             Console.Write("\n");                                    // pular linha
             return aluno;                                           // Retorna o array com os dados do aluno
